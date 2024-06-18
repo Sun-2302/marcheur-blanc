@@ -1,4 +1,4 @@
-package school.hei;
+package school.hei.Carte;
 
 import lombok.Getter;
 
@@ -25,7 +25,7 @@ public class Rue {
         lieu2.ajouterRue(this);
     }
 
-    public Lieu lieuRelié(Lieu lieuActuel) {
+    public Lieu lieuRelie(Lieu lieuActuel) {
         if (lieuActuel.equals(lieu1)) {
             return lieu2;
         } else if (lieuActuel.equals(lieu2)) {

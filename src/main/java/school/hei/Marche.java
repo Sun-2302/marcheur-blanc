@@ -2,6 +2,7 @@ package school.hei;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import school.hei.Carte.Lieu;
 
 import java.util.List;
 
