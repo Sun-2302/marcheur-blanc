@@ -1,4 +1,4 @@
-package school.hei;
+package school.hei.Carte;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -12,10 +12,11 @@ import java.util.List;
 @ToString
 public class Lieu {
     private final String nom;
-    private List<Rue> rues = new ArrayList<>();
+    private List<Rue> rues;
 
     public Lieu(String nom) {
         this.nom = nom;
+        this.rues = new ArrayList<>();
     }
 
     public void ajouterRue(Rue rue) {

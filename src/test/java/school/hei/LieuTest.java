@@ -1,6 +1,8 @@
 package school.hei;
 
 import org.junit.jupiter.api.Test;
+import school.hei.Carte.Lieu;
+import school.hei.Carte.Rue;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
