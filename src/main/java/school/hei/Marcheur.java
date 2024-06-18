@@ -1,35 +1,27 @@
 package school.hei;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
+import school.hei.Carte.Lieu;
+import school.hei.Carte.Rue;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-@AllArgsConstructor
-@Getter
-public class Marcheur {
-    private final String nom;
+public record Marcheur(String nom) {
 
-    public Marche marcher(Carte carte, Lieu depart, Lieu destination) {
-        if (!carte.getLieux().contains(depart) || !carte.getLieux().contains(destination)) {
-            throw new RuntimeException("Tu t'es trompé de carte");
-        }
-
+    public Marche marcher(Lieu depart, Lieu destination) {
         List<Lieu> trajet = new ArrayList<>();
         trajet.add(depart);
-        Random random = new Random();
+        Lieu positionActuel = depart;
 
-        while (!depart.equals(destination)) {
-            List<Rue> ruesDisponibles = new ArrayList<>(depart.getRues());
+        Random random = new Random();
+        while (!positionActuel.equals(destination)) {
+            List<Rue> ruesDisponibles = new ArrayList<>(positionActuel.getRues());
             Rue rueChoisie = ruesDisponibles.get(random.nextInt(ruesDisponibles.size()));
 
-            Lieu prochainLieu = rueChoisie.lieuRelié(depart);
-            depart = prochainLieu;
-            trajet.add(depart);
+            positionActuel = rueChoisie.lieuRelie(positionActuel);
+            trajet.add(positionActuel);
         }
-
         return new Marche(trajet);
     }
 
